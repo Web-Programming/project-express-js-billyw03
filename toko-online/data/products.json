@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop XYZ",
+    "price": 15000000,
+    "description": "Laptop dengan spesifikasi tinggi untuk kebutuhan gaming dan pekerjaan berat.",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "name": "Smartphone ABC",
+    "price": 5000000,
+    "description": "Smartphone dengan kamera berkualitas tinggi dan baterai tahan lama.",
+    "stock": 25
+  },
+  {
+    "id": 3,
+    "name": "Headphone DEF",
+    "price": 2000000,
+    "description": "Headphone dengan suara jernih dan desain nyaman untuk penggunaan jangka panjang.",
+    "stock": 15
+  }
+]
