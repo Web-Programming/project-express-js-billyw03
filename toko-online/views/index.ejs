@@ -9,6 +9,14 @@
         <div class="card-body">
           <h4 class="card-title"><%= product.name %></h4>
           <p class="card-text"><%=product.description %></p>
+          <p class="card-text">
+            <strong>Harga:</strong> Rp <%= product.price.toLocaleString('id-ID')
+            %>
+          </p>
+          <a href="#" class="btn btn-primary">Tambah ke Keranjang</a>
+          <a href="/products/<%= product.id %>" class="btn btn-secondary"
+            >Detail Produk</a
+          >
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var engine = require("ejs-blocks");
 var app = express();
+var productRouter = require("./routes/products");
+app.use("/products", productRouter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
