@@ -12,7 +12,7 @@ router.get("/:id", function (req, res, next) {
   }
 
   res.render("produk-detail", {
-    title: "product.name",
+    title: product.name,
     product: product,
   });
 });
