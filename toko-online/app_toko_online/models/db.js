@@ -1,5 +1,5 @@
 // install paket mongoose menggunakan npm : npm install mongoose
-// npm install mongoose
+// npm install mongoose (untuk koneksi ke mongodb_)
 const mongoose = require("mongoose");
 const dbURI = "mongodb://localhost:27017/paw2-si5c";
 
@@ -12,7 +12,7 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
   console.log("Mongoose connection error:", err);
 });
-
+cd;
 mongoose.connection.on("disconnected", () => {
   console.log("Mongoose disconnected");
 });
