@@ -1,6 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const products = require("../data/products.json");
+var product = require("../models/products");
+
+router.get("/all", async function (req, res, next) {
+  try {
+    const allProducts = await product.find(); //gunakan model 'product'
+    //mengambil semua data produk
+    res.render("index", {
+      title: "Toko Online Sederhana",
+      products: allProducts,
+    });
+  } catch (err) {
+    res.status(500).send("gagal memmuat data produk");
+  }
+});
 
 router.get("/:id", function (req, res, next) {
   const productId = parseInt(req.params.id); // tangkap ID dari URL
