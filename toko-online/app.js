@@ -3,7 +3,6 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 // memanggil file koneksi database
 require("./app_toko_online/models/db"); //koneksi ke database
 
@@ -48,10 +47,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
-});
-
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
 });
 
 module.exports = app;
