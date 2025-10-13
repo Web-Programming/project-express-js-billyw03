@@ -32,7 +32,7 @@ const detail = async (req, res) => {
 };
 
 // Buat rest api
-const apiall = async (req, res) => {
+const all = async (req, res) => {
   try {
     const prod = await Product.find({});
     res.status(200).json({
@@ -47,5 +47,76 @@ const apiall = async (req, res) => {
     });
   }
 };
+// CRUD controller
+// create = POST (/api/produk)
 
-module.exports = { index, detail, apiall };
+// create/instert data
+const create = async (req, res) => {
+  try {
+    // 1. ambil data dari request body
+    const newProduct = new Product({
+      name: req.body.name,
+      price: req.body.price,
+      description: req.body.description,
+      stock: req.body.stock || 0,
+    });
+    // 2 simpan data ke mongodb melalui model product
+    const product = await newProduct.save();
+
+    // 3. kirim respon sukses
+    res.status(201).json({
+      status: true,
+      message: "Produk Berhasil Disimpan",
+      data: product,
+    });
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      res.status(400).json({
+        status: false,
+        message: err.message,
+      });
+    } else {
+      res.status(500).json({
+        status: false,
+        message: "Internet server error",
+      });
+    }
+  }
+};
+
+// read one /detail product
+const detailproduct = async (req, res) => {
+  try {
+    //ambil id dari parameter
+    const productId = req.params.id;
+    // cari berdasarkan id
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      //jika produk tidak ditemukan
+      return res.status(404).json({
+        status: false,
+        message: "Produk tidak ditemukan!",
+      });
+    }
+    //kirim respon sukses
+    res.status(200).json({
+      status: true,
+      message: "Berhasil mengambil data produk",
+      data: product,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: false,
+      message: "Gagal memuat detail produk",
+    });
+  }
+};
+
+// update data
+const update = async (req, res) => {};
+
+// delete/remove data
+const remove = async (req, res) => {};
+
+module.exports = { index, detail, all, create, detailproduct, update, remove };

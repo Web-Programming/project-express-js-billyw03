@@ -5,13 +5,17 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 // memanggil file koneksi database
 require("./app_toko_online/models/db"); //koneksi ke database
+var apiProductRouter = require("./app_toko_online/routes/api/product");
 
 var indexRouter = require("./app_toko_online/routes/index");
 var usersRouter = require("./app_toko_online/routes/users");
 var engine = require("ejs-blocks");
 var app = express();
 const productRouter = require("./app_toko_online/routes/products");
+
+//
 app.use("/produk", productRouter);
+app.use("/api/product", apiProductRouter); // daftarkan route API
 
 // view engine setup
 app.set("views", path.join(__dirname, "app_toko_online", "views")); //perbaikan 1
