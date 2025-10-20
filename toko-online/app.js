@@ -9,6 +9,8 @@ var apiProductRouter = require("./app_toko_online/routes/api/product");
 
 var indexRouter = require("./app_toko_online/routes/index");
 var usersRouter = require("./app_toko_online/routes/users");
+var apiUserRouter = require("./app_toko_online/routes/api/user"); //import route api
+var apiOrderRouter = require("./app_toko_online/routes/api/order"); //import route api order
 var engine = require("ejs-blocks");
 var app = express();
 const productRouter = require("./app_toko_online/routes/products");
@@ -16,6 +18,8 @@ const productRouter = require("./app_toko_online/routes/products");
 //
 app.use("/produk", productRouter);
 app.use("/api/product", apiProductRouter); // daftarkan route API
+app.use("/api/users", apiUserRouter);
+app.use("/api/orders", apiOrderRouter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "app_toko_online", "views")); //perbaikan 1

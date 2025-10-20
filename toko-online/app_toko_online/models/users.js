@@ -38,5 +38,5 @@ const userSchema = new mongoose.Schema({
 });
 
 // buat model dari schema
-const User = mogoose.model("User", userSchema);
-modeule.exports = User;
+const User = mongoose.model("User", userSchema);
+module.exports = User;
